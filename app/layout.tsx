@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import SideNav from "./ui/sidenav";
+import Search from "./ui/search";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="bg-dark">
+            <SideNav />
+            <div className="home-section">
+              <div className="children">
+                <Search placeholder="Enter a movie or tv show..." />
+                {children}
+              </div>
+            </div>
+        </div>
+      </body>
     </html>
   );
 }
